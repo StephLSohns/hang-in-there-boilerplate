@@ -1,7 +1,13 @@
 // query selector variables go here 👇
+var mainPoster = document.querySelector(".main-poster");
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
+
+var savePoster = document.querySelector(".save-poster");
+var showSaved = document.querySelector(".show-saved");
+var showRandom = document.querySelector(".show-random");
+var showForm = document.querySelector(".show-form");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -101,19 +107,56 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
-];
-var currentPoster;
-
+//var savedPosters = [
+  //makePoster(
+  //  "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
+    //"Optimism",
+    //"Keep a joyful heart!"
+  //)
+//];
+posterImage.src = images[0];
+posterTitle.innerText = titles[1];
+posterQuote.innerText = quotes[2];
 // event listeners go here 👇
-
+//mainPoster.addEventListener ('click', mainPageBtns);
+showRandom.addEventListener('click', getRandomIndex);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
+  for (var i = 0; i < array.length; i++) {
   return Math.floor(Math.random() * array.length);
+ }
 }
+function mainPageBtns(event) {
+  if (event.target === showRandom) {
+    posterImage.src = images[0];
+      return
+  }
+ }
+//
+// function mainPageBtns(event) {
+//   if (event.target === showForm) {
+//  }
+// }
+//
+// function mainPageBtns(event) {
+//   if (event.target === showSaved) {
+//  }
+// }
+//
+// function mainPageBtns(event) {
+//   if (event.target === savePoster) {
+//  }
+// }
+//
+// function randomImg(images) {
+//   var picture = getRandomIndex(images);
+// }
+//
+// function randomTitle(titles) {
+//   var title = getRandomIndex(titles);
+// }
+//
+// function randomQuotes(quotes) {
+//   var quotes = getRandomIndex(quotes);
+// }
