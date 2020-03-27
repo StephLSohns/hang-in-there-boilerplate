@@ -1,14 +1,17 @@
 // query selector variables go here 👇
-var mainPoster = document.querySelector(".main-poster");
-var posterImage = document.querySelector(".poster-img");
-var posterTitle = document.querySelector(".poster-title");
-var posterQuote = document.querySelector(".poster-quote");
-
-var savePoster = document.querySelector(".save-poster");
-var showSaved = document.querySelector(".show-saved");
-var showRandom = document.querySelector(".show-random");
-var showForm = document.querySelector(".show-form");
-
+var mainPoster = document.querySelector(".main-poster"); //opening page
+var posterImage = document.querySelector(".poster-img"); //actual poster on opening page whenloaded
+var posterTitle = document.querySelector(".poster-title"); //actual title on opening page
+var posterQuote = document.querySelector(".poster-quote"); //and actual quote on opening page
+var savedPosters = document.querySelector('.saved-posters'); //this is the page of many saved posters
+var savePoster = document.querySelector(".save-poster"); //this is a button on main poster page -saves current poster
+var showSaved = document.querySelector(".show-saved");  //this is the button that takes user to saved posters page
+var showRandom = document.querySelector(".show-random"); //this button changes the poster on the main page -can cycle thru diff posters
+var showForm = document.querySelector(".show-form"); // this button takes user to the Form Page -to make their own poster
+var makePoster = document.querySelector('.make-poster'); // this is the Show My Poster button on the Form page (shows your poster on main page)
+var showMain = document.querySelector('.show-main'); // this button is also on Form page "NEVERMIND"button returns to main page
+var backToMain = document.querySelector('.back-to-main'); //this button is on Saved Posters Page & returns user to main page
+var posterForm = document.querySelector('.poster-form');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -114,25 +117,50 @@ var quotes = [
     //"Keep a joyful heart!"
   //)
 //];
-posterImage.src = images[0];
-posterTitle.innerText = titles[1];
-posterQuote.innerText = quotes[2];
+posterImage.src = images[getRandomIndex(images)];
+posterTitle.innerText = titles[getRandomIndex(titles)];
+posterQuote.innerText = quotes[getRandomIndex(quotes)];
 // event listeners go here 👇
 //mainPoster.addEventListener ('click', mainPageBtns);
-showRandom.addEventListener('click', getRandomIndex);
+// showRandom.addEventListener('click', getRandomIndex);
+// mainPoster.addEventListener('click', mainPosterBtns);
+// showMain.addEventListener('click', returnMainPoster);
+showForm.addEventListener('click', goToFormPage);
+showMain.addEventListener('click', returnToMainPage);
+showSaved.addEventListener('click', goToSavedPosters);
+backToMain.addEventListener('click', returnToMainPage);
+
+// showForm.addEventListener('click',mainPageBtns);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
-  for (var i = 0; i < array.length; i++) {
+  // for (var i = 0; i < array.length; i++) {
   return Math.floor(Math.random() * array.length);
- }
+ // }
 }
-function mainPageBtns(event) {
-  if (event.target === showRandom) {
-    posterImage.src = images[0];
-      return
-  }
+
+function goToFormPage() {
+  posterForm.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
+  // showForm.classList.remove('hidden');
+  // } else if () {
  }
+
+ function returnToMainPage() {
+   posterForm.classList.add('hidden');
+   mainPoster.classList.remove('hidden');
+   savedPosters.classList.add('hidden');
+ }
+
+ function goToSavedPosters() {
+   mainPoster.classList.add('hidden');
+   savedPosters.classList.remove('hidden');
+ }
+
+ // function goToFormPage() {
+ //   showMain.classList.add('hidden');
+ //   showForm.classList.remove('hidden');
+ // }
 //
 // function mainPageBtns(event) {
 //   if (event.target === showForm) {
