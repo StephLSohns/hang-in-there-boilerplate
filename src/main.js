@@ -1,22 +1,21 @@
 // query selector variables go here 👇
-var mainPoster = document.querySelector(".main-poster");
+var mainPoster = document.querySelectorAll(".main-poster");
 
-var posterImage = document.querySelector(".poster-img");
-var posterTitle = document.querySelector(".poster-title");
-var posterQuote = document.querySelector(".poster-quote");
+var posterImage = document.querySelector(".poster-img"); //actual poster on opening page whenloaded
+var posterTitle = document.querySelector(".poster-title"); //actual title on opening page
+var posterQuote = document.querySelector(".poster-quote"); //and actual quote on opening page
 
-var savePoster = document.querySelector(".save-poster");
-var showSaved = document.querySelector(".show-saved");
-var showRandom = document.querySelector(".show-random");
-var showForm = document.querySelector(".show-form");
-
-var posterForm = document.querySelector(".poster-form");
-var makePoster = document.querySelector(".make-poster");
-var showMain = document.querySelector(".show-main");
-
-var checkSavedPosters = document.querySelector(".saved-posters");
-var backToMain = document.querySelector(".back-to-main");
-
+var savePoster = document.querySelector(".save-poster"); //this is a button on main poster page -saves current poster
+var showSaved = document.querySelector(".show-saved");  //this is the button that takes user to saved posters page
+var showRandom = document.querySelector(".show-random"); //this button changes the poster on the main page -can cycle thru diff posters
+var showForm = document.querySelector(".show-form"); // this button takes user to the Form Page -to make their own poster
+// Second SECTION of html
+var posterForm = document.querySelector('.poster-form');
+var makePoster = document.querySelector('.make-poster'); // this is the Show My Poster button on the Form page (shows your poster on main page)
+var showMain = document.querySelector('.show-main'); // this button is also on Form page "NEVERMIND"button returns to main page
+// Third SECTION of html
+var savedPostersPage = document.querySelector('.saved-posters'); //this is the page of many saved posters
+var backToMain = document.querySelector('.back-to-main'); //this button is on Saved Posters Page & returns user to main page
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -122,19 +121,31 @@ posterQuote.innerText = quotes[getRandomIndex(quotes)];
 
 // event listeners go here 👇
 
-showSaved.addEventListener('click', togglePage);
+showForm.addEventListener('click', goToFormPage);
+showMain.addEventListener('click', returnToMainPage);
+showSaved.addEventListener('click', goToSavedPosters);
+backToMain.addEventListener('click', returnToMainPage);
 
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 
 function getRandomIndex(array) {
-  //for (var i = 0; i < array.length; i++) {
+  // for (var i = 0; i < array.length; i++) {
   return Math.floor(Math.random() * array.length);
- }
-//}
-
-
-function togglePage() {
-  mainPoster.classList.add('hidden');
-  checkSavedPosters.classList.remove('hidden')
+ // }
 }
+
+function goToFormPage() {
+  posterForm.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
+ }
+
+ function returnToMainPage() {
+   posterForm.classList.add('hidden');
+   mainPoster.classList.remove('hidden');
+   savedPostersPage.classList.add('hidden');
+ }
+
+ function goToSavedPosters() {
+   mainPoster.classList.add('hidden');
+   savedPostersPage.classList.remove('hidden');
+ }
