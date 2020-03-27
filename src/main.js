@@ -1,14 +1,21 @@
 // query selector variables go here 👇
-var mainPoster = document.querySelector(".main-poster");
-var posterImage = document.querySelector(".poster-img");
-var posterTitle = document.querySelector(".poster-title");
-var posterQuote = document.querySelector(".poster-quote");
+var mainPoster = document.querySelector(".main-poster"); //opening page (First SECTION in html)
 
-var savePoster = document.querySelector(".save-poster");
-var showSaved = document.querySelector(".show-saved");
-var showRandom = document.querySelector(".show-random");
-var showForm = document.querySelector(".show-form");
+var posterImage = document.querySelector(".poster-img"); //actual poster on opening page whenloaded
+var posterTitle = document.querySelector(".poster-title"); //actual title on opening page
+var posterQuote = document.querySelector(".poster-quote"); //and actual quote on opening page
 
+var savePoster = document.querySelector(".save-poster"); //this is a button on main poster page -saves current poster
+var showSaved = document.querySelector(".show-saved");  //this is the button that takes user to saved posters page
+var showRandom = document.querySelector(".show-random"); //this button changes the poster on the main page -can cycle thru diff posters
+var showForm = document.querySelector(".show-form"); // this button takes user to the Form Page -to make their own poster
+// Second SECTION of html
+var posterForm = document.querySelector('.poster-form');
+var makePoster = document.querySelector('.make-poster'); // this is the Show My Poster button on the Form page (shows your poster on main page)
+var showMain = document.querySelector('.show-main'); // this button is also on Form page "NEVERMIND"button returns to main page
+// Third SECTION of html
+var savedPostersPage = document.querySelector('.saved-posters'); //this is the page of many saved posters
+var backToMain = document.querySelector('.back-to-main'); //this button is on Saved Posters Page & returns user to main page
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -107,56 +114,38 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-//var savedPosters = [
-  //makePoster(
-  //  "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    //"Optimism",
-    //"Keep a joyful heart!"
-  //)
-//];
-posterImage.src = images[0];
-posterTitle.innerText = titles[1];
-posterQuote.innerText = quotes[2];
+
+posterImage.src = images[getRandomIndex(images)];
+posterTitle.innerText = titles[getRandomIndex(titles)];
+posterQuote.innerText = quotes[getRandomIndex(quotes)];
+
 // event listeners go here 👇
-//mainPoster.addEventListener ('click', mainPageBtns);
-showRandom.addEventListener('click', getRandomIndex);
+
+showForm.addEventListener('click', goToFormPage);
+showMain.addEventListener('click', returnToMainPage);
+showSaved.addEventListener('click', goToSavedPosters);
+backToMain.addEventListener('click', returnToMainPage);
+
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
-  for (var i = 0; i < array.length; i++) {
+  // for (var i = 0; i < array.length; i++) {
   return Math.floor(Math.random() * array.length);
- }
+ // }
 }
-function mainPageBtns(event) {
-  if (event.target === showRandom) {
-    posterImage.src = images[0];
-      return
-  }
+
+function goToFormPage() {
+  posterForm.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
  }
-//
-// function mainPageBtns(event) {
-//   if (event.target === showForm) {
-//  }
-// }
-//
-// function mainPageBtns(event) {
-//   if (event.target === showSaved) {
-//  }
-// }
-//
-// function mainPageBtns(event) {
-//   if (event.target === savePoster) {
-//  }
-// }
-//
-// function randomImg(images) {
-//   var picture = getRandomIndex(images);
-// }
-//
-// function randomTitle(titles) {
-//   var title = getRandomIndex(titles);
-// }
-//
-// function randomQuotes(quotes) {
-//   var quotes = getRandomIndex(quotes);
-// }
+
+ function returnToMainPage() {
+   posterForm.classList.add('hidden');
+   mainPoster.classList.remove('hidden');
+   savedPostersPage.classList.add('hidden');
+ }
+
+ function goToSavedPosters() {
+   mainPoster.classList.add('hidden');
+   savedPostersPage.classList.remove('hidden');
+ }
