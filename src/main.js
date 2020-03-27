@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-var mainPoster = document.querySelectorAll(".main-poster");
+var mainPoster = document.querySelectorAll(".main-poster"); //opening page (First SECTION in html)
 
 var posterImage = document.querySelector(".poster-img"); //actual poster on opening page whenloaded
 var posterTitle = document.querySelector(".poster-title"); //actual title on opening page
