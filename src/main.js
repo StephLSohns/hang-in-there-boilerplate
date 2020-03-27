@@ -10,8 +10,12 @@ var showSaved = document.querySelector(".show-saved");
 var showRandom = document.querySelector(".show-random");
 var showForm = document.querySelector(".show-form");
 
+var posterForm = document.querySelector(".poster-form");
+var makePoster = document.querySelector(".make-poster");
+var showMain = document.querySelector(".show-main");
 
-var checkSavedPosters = document.querySelector(".saved-posters")
+var checkSavedPosters = document.querySelector(".saved-posters");
+var backToMain = document.querySelector(".back-to-main");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -111,22 +115,12 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-//var savedPosters = [
-  //makePoster(
-  //  "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    //"Optimism",
-    //"Keep a joyful heart!"
-  //)
-//];
-
-
 
 posterImage.src = images[getRandomIndex(images)];
 posterTitle.innerText = titles[getRandomIndex(titles)];
 posterQuote.innerText = quotes[getRandomIndex(quotes)];
 
 // event listeners go here 👇
-//mainPoster.addEventListener ('click', mainPageBtns);
 
 showSaved.addEventListener('click', togglePage);
 
@@ -138,7 +132,6 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
  }
 //}
-
 
 
 function togglePage() {
