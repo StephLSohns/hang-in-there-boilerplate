@@ -157,14 +157,14 @@ function goToFormPage() {
    mainPoster.classList.add('hidden');
    savedPostersPage.classList.remove('hidden');
  }
-
+ 
  function gatherUserData() {
-   var imageUrl = imageUrlInput.value;
-   var title = titleInput.value;
-   var quote = quoteInput.value;
-   images.push(imageUrl);
-   titles.push(title);
-   quotes.push(quote);
+   // var imageUrl = imageUrlInput.value;
+   // var title = titleInput.value;
+   // var quote = quoteInput.value;
+   images.push(imageUrlInput.value);
+   titles.push(titleInput.value);
+   quotes.push(quoteInput.value);
    var anotherNewPoster = new Poster(imageUrl, title, quote);
    savedPostersArray.push(anotherNewPoster);
    displayCreatedPoster();
