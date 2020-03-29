@@ -1,6 +1,7 @@
 // query selector variables go here 👇
 var mainPoster = document.querySelector(".main-poster"); //opening page (First SECTION in html)
 
+var newPoster = document.querySelector(".poster")
 var posterImage = document.querySelector(".poster-img"); //actual poster on opening page whenloaded
 var posterTitle = document.querySelector(".poster-title"); //actual title on opening page
 var posterQuote = document.querySelector(".poster-quote"); //and actual quote on opening page
@@ -161,13 +162,22 @@ function goToFormPage() {
    savedPostersPage.classList.remove('hidden');
  }
 
- function showMyPosterBtn() {
+ function showMyPosterBtn(event) {
+   event.preventDefault()
+   //console.log(imageUrl.value)
    images.push(imageUrl.value);
    titles.push(motivationalTitle.value);
    quotes.push(motivationalQuote.value);
-   var anotherNewPoster = new Poster(customImage, customTitle, customQuote);
-   savedPostersArray.push(anotherNewPoster);
-   displayCreatedPoster();
+   var anotherNewPoster = new Poster(imageUrl.value, motivationalTitle.value, motivationalQuote.value);
+   // newPoster.innerHTML = `
+   //    <img class="poster-img" src="${anotherNewPoster.imageURL}" alt="nothin' to see here">
+   //    <h1 class="poster-title">${anotherNewPoster.title}</h1>
+   //    <h3 class="poster-quote">${anothetNewPoster.quote}</h3>
+   //  `
+
+   //savedPostersArray.push(anotherNewPoster);
+   console.log(anotherNewPoster)
+   //displayCreatedPoster();
  }
 
  function displayCreatedPoster() {
