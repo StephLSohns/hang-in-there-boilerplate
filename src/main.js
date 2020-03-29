@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-var mainPoster = document.querySelectorAll(".main-poster"); //opening page (First SECTION in html)
+var mainPoster = document.querySelector(".main-poster"); //opening page (First SECTION in html)
 
 var posterImage = document.querySelector(".poster-img"); //actual poster on opening page whenloaded
 var posterTitle = document.querySelector(".poster-title"); //actual title on opening page
@@ -16,6 +16,13 @@ var showMain = document.querySelector('.show-main'); // this button is also on F
 // Third SECTION of html
 var savedPostersPage = document.querySelector('.saved-posters'); //this is the page of many saved posters
 var backToMain = document.querySelector('.back-to-main'); //this button is on Saved Posters Page & returns user to main page
+
+var imageUrl = document.getElementById("poster-image-url");
+var motivationalTitle = document.getElementById("poster-title");
+var motivationalQuote = document.getElementById("poster-quote");
+
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -115,6 +122,8 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
+var savedPostersArray = [];
+
 posterImage.src = images[getRandomIndex(images)];
 posterTitle.innerText = titles[getRandomIndex(titles)];
 posterQuote.innerText = quotes[getRandomIndex(quotes)];
@@ -125,6 +134,8 @@ showForm.addEventListener('click', goToFormPage);
 showMain.addEventListener('click', returnToMainPage);
 showSaved.addEventListener('click', goToSavedPosters);
 backToMain.addEventListener('click', returnToMainPage);
+
+makePoster.addEventListener('click', showMyPosterBtn);
 
 // functions and event handlers go here 👇
 
@@ -148,4 +159,23 @@ function goToFormPage() {
  function goToSavedPosters() {
    mainPoster.classList.add('hidden');
    savedPostersPage.classList.remove('hidden');
+ }
+
+ function showMyPosterBtn() {
+   images.push(imageUrl.value);
+   titles.push(motivationalTitle.value);
+   quotes.push(motivationalQuote.value);
+   var anotherNewPoster = new Poster(customImage, customTitle, customQuote);
+   savedPostersArray.push(anotherNewPoster);
+   displayCreatedPoster();
+ }
+
+ function displayCreatedPoster() {
+   var customImage = imageUrl.value;
+   var customTitle = motivationalTitle.value;
+   var customQuote = motivationalQuote.value;
+   posterImage.src = customImage;
+   posterTitle.innerText = customTitle;
+   posterQuote.innerText = customQuote;
+   returnToMainPage();
  }
