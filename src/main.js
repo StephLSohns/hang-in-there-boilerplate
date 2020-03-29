@@ -4,6 +4,7 @@ var mainPoster = document.querySelector(".main-poster"); //opening page (First S
 var posterImage = document.querySelector(".poster-img"); //actual poster on opening page whenloaded
 var posterTitle = document.querySelector(".poster-title"); //actual title on opening page
 var posterQuote = document.querySelector(".poster-quote"); //and actual quote on opening page
+var newPoster = document.querySelector('.poster');
 
 var savePoster = document.querySelector(".save-poster"); //this is a button on main poster page -saves current poster
 var showSaved = document.querySelector(".show-saved");  //this is the button that takes user to saved posters page
@@ -157,16 +158,22 @@ function goToFormPage() {
    mainPoster.classList.add('hidden');
    savedPostersPage.classList.remove('hidden');
  }
- 
- function gatherUserData() {
-   // var imageUrl = imageUrlInput.value;
-   // var title = titleInput.value;
-   // var quote = quoteInput.value;
-   images.push(imageUrlInput.value);
-   titles.push(titleInput.value);
-   quotes.push(quoteInput.value);
+
+ function gatherUserData(event) {
+   event.preventDefault();
+   var imageUrl = imageUrlInput.value;
+   var title = titleInput.value;
+   var quote = quoteInput.value;
+   images.push(imageUrl);
+   titles.push(title);
+   quotes.push(quote);
    var anotherNewPoster = new Poster(imageUrl, title, quote);
-   savedPostersArray.push(anotherNewPoster);
+   newPoster.innerHTML = `
+    <img class="poster-img" src="${anotherNewPoster.imageURL}" alt="nothin' to see here">
+    <h1 class="poster-title">${anotherNewPoster.title}</h1>
+    <h3 class="poster-quote">${anotherNewPoster.quote}</h3>
+    `
+   // savedPostersArray.push(anotherNewPoster);
    displayCreatedPoster();
  }
 
