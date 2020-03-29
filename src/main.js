@@ -1,6 +1,7 @@
 // query selector variables go here 👇
-var mainPoster = document.querySelectorAll(".main-poster"); //opening page (First SECTION in html)
+var mainPoster = document.querySelector(".main-poster"); //opening page (First SECTION in html)
 
+var newPoster = document.querySelector(".poster")
 var posterImage = document.querySelector(".poster-img"); //actual poster on opening page whenloaded
 var posterTitle = document.querySelector(".poster-title"); //actual title on opening page
 var posterQuote = document.querySelector(".poster-quote"); //and actual quote on opening page
@@ -122,6 +123,8 @@ var quotes = [
 ];
 var savedPostersArray = [];
 
+var savedPostersArray = [];
+
 posterImage.src = images[getRandomIndex(images)];
 posterTitle.innerText = titles[getRandomIndex(titles)];
 posterQuote.innerText = quotes[getRandomIndex(quotes)];
@@ -134,6 +137,8 @@ showMain.addEventListener('click', returnToMainPage);
 showSaved.addEventListener('click', goToSavedPosters);
 backToMain.addEventListener('click', returnToMainPage);
 makePoster.addEventListener('click', gatherUserData);
+
+makePoster.addEventListener('click', showMyPosterBtn);
 
 // functions and event handlers go here 👇
 
