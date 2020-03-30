@@ -193,8 +193,9 @@ function goToFormPage() {
    var quote = document.querySelector(".poster-quote").innerText;
    var anotherSavedPoster = new Poster(imageUrl, title, quote);
    savedPostersArray.push(anotherSavedPoster);
-   goToSavedPosters();
+   savePoster.removeEventListener('click', saveCreatedPoster);
    console.log(savedPostersArray);
+
  //   var displayImageUrl = posterImage.value;
  //   var displayTitle = posterTitle.value;
  //   var displayQuote = posterQuote.value;
