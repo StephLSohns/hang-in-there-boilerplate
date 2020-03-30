@@ -5,7 +5,6 @@ var newPoster = document.querySelector(".poster")
 var posterImage = document.querySelector(".poster-img"); //actual poster on opening page whenloaded
 var posterTitle = document.querySelector(".poster-title"); //actual title on opening page
 var posterQuote = document.querySelector(".poster-quote"); //and actual quote on opening page
-var newPoster = document.querySelector('.poster');
 
 var savePoster = document.querySelector(".save-poster"); //this is a button on main poster page -saves current poster
 var showSaved = document.querySelector(".show-saved");  //this is the button that takes user to saved posters page
@@ -123,8 +122,6 @@ var quotes = [
 ];
 var savedPostersArray = [];
 
-var savedPostersArray = [];
-
 posterImage.src = images[getRandomIndex(images)];
 posterTitle.innerText = titles[getRandomIndex(titles)];
 posterQuote.innerText = quotes[getRandomIndex(quotes)];
@@ -137,8 +134,7 @@ showMain.addEventListener('click', returnToMainPage);
 showSaved.addEventListener('click', goToSavedPosters);
 backToMain.addEventListener('click', returnToMainPage);
 makePoster.addEventListener('click', gatherUserData);
-
-makePoster.addEventListener('click', showMyPosterBtn);
+savePoster.addEventListener('click', saveCreatedPoster);
 
 // functions and event handlers go here 👇
 
@@ -173,12 +169,11 @@ function goToFormPage() {
    titles.push(title);
    quotes.push(quote);
    var anotherNewPoster = new Poster(imageUrl, title, quote);
-   newPoster.innerHTML = `
-    <img class="poster-img" src="${anotherNewPoster.imageURL}" alt="nothin' to see here">
-    <h1 class="poster-title">${anotherNewPoster.title}</h1>
-    <h3 class="poster-quote">${anotherNewPoster.quote}</h3>
-    `
-   // savedPostersArray.push(anotherNewPoster);
+   // newPoster.innerHTML = `
+   //  <img class="poster-img" src="${anotherNewPoster.imageURL}" alt="nothin' to see here">
+   //  <h1 class="poster-title">${anotherNewPoster.title}</h1>
+   //  <h3 class="poster-quote">${anotherNewPoster.quote}</h3>
+   //  `
    displayCreatedPoster();
  }
 
@@ -192,14 +187,21 @@ function goToFormPage() {
    returnToMainPage();
  }
 
- // function saveCreatedPosterValue() {
+ function saveCreatedPoster() {
+   var imageUrl = document.querySelector(".poster-img").src;
+   var title = document.querySelector(".poster-title").innerText;
+   var quote = document.querySelector(".poster-quote").innerText;
+   var anotherSavedPoster = new Poster(imageUrl, title, quote);
+   savedPostersArray.push(anotherSavedPoster);
+   goToSavedPosters();
+   console.log(savedPostersArray);
  //   var displayImageUrl = posterImage.value;
  //   var displayTitle = posterTitle.value;
  //   var displayQuote = posterQuote.value;
  //   posterImage.value = posterTitle.value = posterQuote.value = "";
  //   displayCreatedPoster(displayImageUrl, displayTitle, displayQuote);
  //   // console.log(displayImageUrl, displayTitle, displayQuote);
- // }
+ }
 
  // function getImageUrl() {
  //   var imageUrl = imageUrlInput.value;
