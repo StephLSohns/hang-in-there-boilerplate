@@ -123,8 +123,6 @@ var quotes = [
 ];
 var savedPostersArray = [];
 
-var savedPostersArray = [];
-
 posterImage.src = images[getRandomIndex(images)];
 posterTitle.innerText = titles[getRandomIndex(titles)];
 posterQuote.innerText = quotes[getRandomIndex(quotes)];
@@ -147,12 +145,6 @@ function getRandomIndex(array) {
   // for (var i = 0; i < array.length; i++) {
   return Math.floor(Math.random() * array.length);
  // }
-}
-
-function saveCurrentPoster() {
-  var poster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText)
-  savedPostersArray.push(poster)
-  console.log(savedPostersArray)
 }
 
 function goToFormPage() {
@@ -180,12 +172,6 @@ function goToFormPage() {
    titles.push(title);
    quotes.push(quote);
    var anotherNewPoster = new Poster(imageUrl, title, quote);
-   newPoster.innerHTML = `
-    <img class="poster-img" src="${anotherNewPoster.imageURL}" alt="nothin' to see here">
-    <h1 class="poster-title">${anotherNewPoster.title}</h1>
-    <h3 class="poster-quote">${anotherNewPoster.quote}</h3>
-    `
-   // savedPostersArray.push(anotherNewPoster);
    displayCreatedPoster();
  }
 
@@ -199,28 +185,8 @@ function goToFormPage() {
    returnToMainPage();
  }
 
- // function saveCreatedPosterValue() {
- //   var displayImageUrl = posterImage.value;
- //   var displayTitle = posterTitle.value;
- //   var displayQuote = posterQuote.value;
- //   posterImage.value = posterTitle.value = posterQuote.value = "";
- //   displayCreatedPoster(displayImageUrl, displayTitle, displayQuote);
- //   // console.log(displayImageUrl, displayTitle, displayQuote);
- // }
-
- // function getImageUrl() {
- //   var imageUrl = imageUrlInput.value;
- // }
- //
- // function getUserTitle() {
- //   var title = titleInput.value;
- // }
- //
- // function getUserQuote() {
- //   var quote = quoteInput.value;
- // }
- // function showMyPosterBtn() {
- //   var newUserInput = [];
- //   for (var i = 0; i < newUserInput.length; i++);
- //   newUserInput.push(document.querySelector('#poster-image-url', '#poster-title', '#poster-quote').value);
- // }
+ function saveCurrentPoster() {
+   var poster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText)
+   savedPostersArray.push(poster)
+   savePoster.removeEventListener('click', saveCurrentPoster)
+ }
