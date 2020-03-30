@@ -138,7 +138,8 @@ showSaved.addEventListener('click', goToSavedPosters);
 backToMain.addEventListener('click', returnToMainPage);
 makePoster.addEventListener('click', gatherUserData);
 
-makePoster.addEventListener('click', showMyPosterBtn);
+savePoster.addEventListener('click', saveCurrentPoster)
+//makePoster.addEventListener('click', showMyPosterBtn);
 
 // functions and event handlers go here 👇
 
@@ -146,6 +147,12 @@ function getRandomIndex(array) {
   // for (var i = 0; i < array.length; i++) {
   return Math.floor(Math.random() * array.length);
  // }
+}
+
+function saveCurrentPoster() {
+  var poster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText)
+  savedPostersArray.push(poster)
+  console.log(savedPostersArray)
 }
 
 function goToFormPage() {
