@@ -16,6 +16,7 @@ var makePoster = document.querySelector(".make-poster"); // this is the Show My 
 var showMain = document.querySelector(".show-main"); // this button is also on Form page "NEVERMIND"button returns to main page
 // Third SECTION of html
 var savedPostersPage = document.querySelector(".saved-posters"); //this is the page of many saved posters
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var backToMain = document.querySelector(".back-to-main");//this button is on Saved Posters Page & returns user to main page
 
 var imageUrlInput = document.getElementById('poster-image-url');
@@ -158,6 +159,7 @@ function goToFormPage() {
  function goToSavedPosters() {
    mainPoster.classList.add('hidden');
    savedPostersPage.classList.remove('hidden');
+   populateSavedPostersGrid();
  }
 
  function gatherUserData(event) {
@@ -195,13 +197,15 @@ function goToFormPage() {
    savedPostersArray.push(anotherSavedPoster);
    savePoster.removeEventListener('click', saveCreatedPoster);
    console.log(savedPostersArray);
+ }
 
- //   var displayImageUrl = posterImage.value;
- //   var displayTitle = posterTitle.value;
- //   var displayQuote = posterQuote.value;
- //   posterImage.value = posterTitle.value = posterQuote.value = "";
- //   displayCreatedPoster(displayImageUrl, displayTitle, displayQuote);
- //   // console.log(displayImageUrl, displayTitle, displayQuote);
+ function populateSavedPostersGrid() {
+   for(var i = 0; i < savedPostersArray.length; i++) {
+     savedPostersGrid.innerHTML = `<section class="saved-posters"><div class="poster"><img class="poster-img mini-poster" src="${savedPostersArray[i].imageURL}" alt="nothin' to see here">
+     <h1 class="poster-title mini-poster">${savedPostersArray[i].title}</h1><h2 class="mini-poster h2"></h2>
+     <h3 class="poster-quote mini-poster">${savedPostersArray[i].quote}</h3></div></section>`
+   }
+
  }
 
  // function getImageUrl() {
