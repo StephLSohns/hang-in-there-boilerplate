@@ -200,12 +200,14 @@ function goToFormPage() {
  }
 
  function populateSavedPostersGrid() {
+   var savedPostersHtml = "";
    for(var i = 0; i < savedPostersArray.length; i++) {
-     savedPostersGrid.innerHTML = `<section class="saved-posters"><div class="poster"><img class="poster-img mini-poster" src="${savedPostersArray[i].imageURL}" alt="nothin' to see here">
-     <h1 class="poster-title mini-poster">${savedPostersArray[i].title}</h1><h2 class="mini-poster h2"></h2>
-     <h3 class="poster-quote mini-poster">${savedPostersArray[i].quote}</h3></div></section>`
+     savedPostersHtml = savedPostersHtml + `<div class="mini-poster">
+     <img class="poster-img" src="${savedPostersArray[i].imageURL}" alt="nothin' to see here">
+     <h2 class="poster-title">${savedPostersArray[i].title}</h2>
+     <h4 class="poster-quote">${savedPostersArray[i].quote}</h4></div>`
    }
-
+    savedPostersGrid.innerHTML = savedPostersHtml;
  }
 
  // function getImageUrl() {
