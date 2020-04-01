@@ -136,7 +136,7 @@ showSaved.addEventListener('click', goToSavedPosters);
 backToMain.addEventListener('click', returnToMainPage);
 makePoster.addEventListener('click', gatherUserData);
 savePoster.addEventListener('click', saveCreatedPoster);
-
+savePoster.addEventListener('click', populateSavedPostersGrid);
 // functions and event handlers go here 👇
 
 function getRandomIndex(array) {
@@ -159,7 +159,7 @@ function goToFormPage() {
  function goToSavedPosters() {
    mainPoster.classList.add('hidden');
    savedPostersPage.classList.remove('hidden');
-   populateSavedPostersGrid();
+   // populateSavedPostersGrid();
  }
 
  function gatherUserData(event) {
@@ -200,29 +200,12 @@ function goToFormPage() {
  }
 
  function populateSavedPostersGrid() {
-   var savedPostersHtml = "";
+   // var savedPostersHtml = "";
    for(var i = 0; i < savedPostersArray.length; i++) {
-     savedPostersHtml = savedPostersHtml + `<div class="mini-poster">
-     <img class="poster-img" src="${savedPostersArray[i].imageURL}" alt="nothin' to see here">
-     <h2 class="poster-title">${savedPostersArray[i].title}</h2>
-     <h4 class="poster-quote">${savedPostersArray[i].quote}</h4></div>`
+     savedPostersHtml = `<div class="mini-poster">
+     <img src="${savedPostersArray[i].imageURL}" alt="nothin' to see here">
+     <h2>${savedPostersArray[i].title}</h2>
+     <h4>${savedPostersArray[i].quote}</h4></div>`
    }
-    savedPostersGrid.innerHTML = savedPostersHtml;
+     savedPostersGrid.insertAdjacentHTML("afterbegin", savedPostersHtml);
  }
-
- // function getImageUrl() {
- //   var imageUrl = imageUrlInput.value;
- // }
- //
- // function getUserTitle() {
- //   var title = titleInput.value;
- // }
- //
- // function getUserQuote() {
- //   var quote = quoteInput.value;
- // }
- // function showMyPosterBtn() {
- //   var newUserInput = [];
- //   for (var i = 0; i < newUserInput.length; i++);
- //   newUserInput.push(document.querySelector('#poster-image-url', '#poster-title', '#poster-quote').value);
- // }
