@@ -17,11 +17,14 @@ var makePoster = document.querySelector(".make-poster"); // this is the Show My 
 var showMain = document.querySelector(".show-main"); // this button is also on Form page "NEVERMIND"button returns to main page
 // Third SECTION of html
 var savedPostersPage = document.querySelector(".saved-posters"); //this is the page of many saved posters
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var backToMain = document.querySelector(".back-to-main");//this button is on Saved Posters Page & returns user to main page
 
 var imageUrlInput = document.getElementById('poster-image-url');
 var titleInput = document.getElementById('poster-title');
 var quoteInput = document.getElementById('poster-quote');
+
+var savedPostersArray = [];
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -121,7 +124,6 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPostersArray = [];
 
 posterImage.src = images[getRandomIndex(images)];
 posterTitle.innerText = titles[getRandomIndex(titles)];
@@ -161,6 +163,7 @@ function goToFormPage() {
  function goToSavedPosters() {
    mainPoster.classList.add('hidden');
    savedPostersPage.classList.remove('hidden');
+   populateSavedPostersGrid();
  }
 
  function gatherUserData(event) {
@@ -189,4 +192,17 @@ function goToFormPage() {
    var poster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText)
    savedPostersArray.push(poster)
    savePoster.removeEventListener('click', saveCurrentPoster)
+   console.log(savedPostersArray)
  }
+
+ function populateSavedPostersGrid() {
+   for (var i = 0; i < savedPostersArray.length; i++) {
+   savedPostersGrid.innerHTML = `<section class="saved-posters"><div class="poster saved-posters-grid">
+        <img class="poster-img mini-poster" src="${savedPostersArray[i].imageURL}" alt="nothin' to see here">
+        <h1 class="poster-title">${savedPostersArray[i].title}</h1><h2 class="saved-posters"</h2>
+        <h3 class="poster-quote">${savedPostersArray[i].quote}</h3></div></section>`
+  }
+ }
+   //the poster that we decide to save will show up in the saved posters array and populte the saved poster getRandomIndex
+   //we want to pull from our saved array with the saved images, title and quote
+   //
