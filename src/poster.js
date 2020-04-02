@@ -6,8 +6,3 @@ class Poster {
     this.quote = quote;
   }
 }
-// var brandNewPoster = new Poster(imageURL, title, quote) {
-//   brandNewPoster.imageURL =
-//   brandNewPoster.title =
-//   brandNewPoster.quote =
-// }
