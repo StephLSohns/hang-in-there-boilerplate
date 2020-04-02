@@ -1,23 +1,23 @@
 // query selector variables go here 👇
-var mainPoster = document.querySelector(".main-poster"); //opening page (First SECTION in html)
+var mainPoster = document.querySelector(".main-poster");
 
 var newPoster = document.querySelector(".poster");
-var posterImage = document.querySelector(".poster-img"); //actual poster on opening page whenloaded
-var posterTitle = document.querySelector(".poster-title"); //actual title on opening page
-var posterQuote = document.querySelector(".poster-quote"); //and actual quote on opening page
+var posterImage = document.querySelector(".poster-img");
+var posterTitle = document.querySelector(".poster-title");
+var posterQuote = document.querySelector(".poster-quote");
 
-var savePoster = document.querySelector(".save-poster"); //this is a button on main poster page -saves current poster
-var showSaved = document.querySelector(".show-saved");  //this is the button that takes user to saved posters page
-var showRandom = document.querySelector(".show-random"); //this button changes the poster on the main page -can cycle thru diff posters
-var showForm = document.querySelector(".show-form"); // this button takes user to the Form Page -to make their own poster
+var savePoster = document.querySelector(".save-poster");
+var showSaved = document.querySelector(".show-saved");
+var showRandom = document.querySelector(".show-random");
+var showForm = document.querySelector(".show-form");
 // Second SECTION of html
 var posterForm = document.querySelector(".poster-form");
-var makePoster = document.querySelector(".make-poster"); // this is the Show My Poster button on the Form page (shows your poster on main page)
-var showMain = document.querySelector(".show-main"); // this button is also on Form page "NEVERMIND"button returns to main page
+var makePoster = document.querySelector(".make-poster");
+var showMain = document.querySelector(".show-main");
 // Third SECTION of html
-var savedPostersPage = document.querySelector(".saved-posters"); //this is the page of many saved posters
+var savedPostersPage = document.querySelector(".saved-posters");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
-var backToMain = document.querySelector(".back-to-main");//this button is on Saved Posters Page & returns user to main page
+var backToMain = document.querySelector(".back-to-main");
 
 var imageUrlInput = document.getElementById('poster-image-url');
 var titleInput = document.getElementById('poster-title');
@@ -161,18 +161,6 @@ function goToSavedPosters() {
    savedPostersPage.classList.remove('hidden');
 }
 
-// function gatherUserData(event) {
-//    event.preventDefault();
-//    var imageUrl = imageUrlInput.value;
-//    var title = titleInput.value;
-//    var quote = quoteInput.value;
-//    images.push(imageUrl);
-//    titles.push(title);
-//    quotes.push(quote);
-//    var anotherNewPoster = new Poster(imageUrl, title, quote);
-//    displayCreatedPoster();
-//  }
-
  function displayCreatedPoster() {
    var imageUrl = imageUrlInput.value;
    var title = titleInput.value;
@@ -212,14 +200,7 @@ function populateSavedPostersGrid() {
      <img src=“${savedPostersArray[i].imageURL}” alt=“nothin’ to see here”>
      <h2>${savedPostersArray[i].title}</h2>
      <h4>${savedPostersArray[i].quote}</h4></div>`);
-   }
-}
+  }
+ }
 
- // function populateSavedPostersGrid() {
- //   for (var i = 0; i < savedPostersArray.length; i++) {
- //   savedPostersGrid.innerHTML = `<section class="saved-posters"><div class="poster saved-posters-grid">
- //        <img class="poster-img mini-poster" src="${savedPostersArray[i].imageURL}" alt="nothin' to see here">
- //        <h1 class="poster-title">${savedPostersArray[i].title}</h1><h2 class="saved-posters"</h2>
- //        <h3 class="poster-quote">${savedPostersArray[i].quote}</h3></div></section>`
- //  }
- // }
+ 
