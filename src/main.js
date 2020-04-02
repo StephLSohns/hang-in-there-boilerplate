@@ -1,7 +1,7 @@
 // query selector variables go here 👇
 var mainPoster = document.querySelector(".main-poster");
 
-var newPoster = document.querySelector(".poster");
+var newPoster = document.querySelector(".poster")
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
@@ -10,11 +10,11 @@ var savePoster = document.querySelector(".save-poster");
 var showSaved = document.querySelector(".show-saved");
 var showRandom = document.querySelector(".show-random");
 var showForm = document.querySelector(".show-form");
-// Second SECTION of html
+
 var posterForm = document.querySelector(".poster-form");
 var makePoster = document.querySelector(".make-poster");
 var showMain = document.querySelector(".show-main");
-// Third SECTION of html
+
 var savedPostersPage = document.querySelector(".saved-posters");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var backToMain = document.querySelector(".back-to-main");
@@ -137,7 +137,7 @@ showForm.addEventListener('click', goToFormPage);
 showMain.addEventListener('click', returnToMainPage);
 showSaved.addEventListener('click', goToSavedPosters);
 backToMain.addEventListener('click', returnToMainPage);
-makePoster.addEventListener('click', saveCurrentPoster);
+makePoster.addEventListener('click', saveCreatedPoster);
 savePoster.addEventListener('click', mySavedPoster);
 
 // functions and event handlers go here 👇
@@ -151,56 +151,55 @@ function goToFormPage() {
 }
 
 function returnToMainPage() {
-   posterForm.classList.add('hidden');
-   mainPoster.classList.remove('hidden');
-   savedPostersPage.classList.add('hidden');
+  posterForm.classList.add('hidden');
+  mainPoster.classList.remove('hidden');
+  savedPostersPage.classList.add('hidden');
 }
 
 function goToSavedPosters() {
-   mainPoster.classList.add('hidden');
-   savedPostersPage.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
+  savedPostersPage.classList.remove('hidden');
 }
 
- function displayCreatedPoster() {
-   var imageUrl = imageUrlInput.value;
-   var title = titleInput.value;
-   var quote = quoteInput.value;
-   posterImage.src = imageUrl;
-   posterTitle.innerText = title;
-   posterQuote.innerText = quote;
-   returnToMainPage();
- }
+function displayCreatedPoster() {
+  var imageUrl = imageUrlInput.value;
+  var title = titleInput.value;
+  var quote = quoteInput.value;
+  posterImage.src = imageUrl;
+  posterTitle.innerText = title;
+  posterQuote.innerText = quote;
+  returnToMainPage();
+}
 
- function saveCurrentPoster(event) {
-   event.preventDefault();
-   var imageUrl = imageUrlInput.value;
-   var title = titleInput.value;
-   var quote = quoteInput.value;
-   currentPoster = new Poster(imageUrl, title, quote);
-   displayCreatedPoster();
- }
+function saveCreatedPoster(event) {
+  event.preventDefault();
+  var imageUrl = imageUrlInput.value;
+  var title = titleInput.value;
+  var quote = quoteInput.value;
+  currentPoster = new Poster(imageUrl, title, quote);
+  displayCreatedPoster();
+}
 
- function mySavedPoster() {
-   var noDuplicates = true;
-   for (var i = 0; i < savedPostersArayy.length; i++) {
+function mySavedPoster() {
+  var noDuplicates = true;
+  for (var i = 0; i < savedPostersArray.length; i++) {
     if (savedPostersArray[i].id == currentPoster.id) {
       noDuplicates = false;
- }
-}
-if (noDuplicates) {
-  savedPostersArray.push(currentPoster);
-  populateSavedPostersGrid();
- }
+    }
+  }
+  if (noDuplicates) {
+    savedPostersArray.push(currentPoster);
+    populateSavedPostersGrid();
+  }
 }
 
 function populateSavedPostersGrid() {
-  savedPostersGrid.innerText = '';
+  savedPostersGrid.innerText = "";
    for (var i = 0; i < savedPostersArray.length; i++) {
-     savedPostersGrid.insertAdjacentHTML(“afterbegin”, `<div class=“mini-poster”>
-     <img src=“${savedPostersArray[i].imageURL}” alt=“nothin’ to see here”>
+     savedPostersGrid.insertAdjacentHTML("afterbegin", `<div class="mini-poster">
+     <img src="${savedPostersArray[i].imageURL}" alt="nothin' to see here">
      <h2>${savedPostersArray[i].title}</h2>
      <h4>${savedPostersArray[i].quote}</h4></div>`);
-  }
- }
+   }
+}
 
- 
