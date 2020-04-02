@@ -140,7 +140,6 @@ backToMain.addEventListener('click', returnToMainPage);
 makePoster.addEventListener('click', saveCreatedPoster);
 savePoster.addEventListener('click', mySavedPoster);
 
-
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -203,3 +202,4 @@ function populateSavedPostersGrid() {
      <h4>${savedPostersArray[i].quote}</h4></div>`);
    }
 }
+
